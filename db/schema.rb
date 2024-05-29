@@ -14,7 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_29_011121) do
   create_table "searches", force: :cascade do |t|
     t.string "term"
     t.string "ip"
-    t.integer "user_id"
+    t.string "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

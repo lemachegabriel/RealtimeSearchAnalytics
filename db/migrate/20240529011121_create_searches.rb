@@ -3,7 +3,7 @@ class CreateSearches < ActiveRecord::Migration[7.0]
     create_table :searches do |t|
       t.string :term
       t.string :ip
-      t.integer :user_id
+      t.string :user_id
 
       t.timestamps
     end
