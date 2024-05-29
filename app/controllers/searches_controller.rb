@@ -9,7 +9,8 @@ class SearchesController < ApplicationController
       SearchProcessorJob.set(wait: 1.minute).perform_later(user_id, search_term, ip)
     end
 
-    render json: { status: 'ok' }
+    @articles = Article.where("LOWER(title) LIKE ?", "%#{search_term.downcase}%")
+    render json: @articles
   end
 
   def analytics
