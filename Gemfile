@@ -76,4 +76,5 @@ gem 'sidekiq'
 gem 'rspec-rails', group: [:development, :test]
 gem 'rspec-sidekiq', group: :test
 gem 'dotenv-rails'
+gem 'pg'
 
