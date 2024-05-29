@@ -7,6 +7,6 @@ class SearchProcessorJob < ApplicationJob
     $redis.del(redis_key)
 
     final_search = searches.last
-    Search.create!(term: final_search, ip: ip, user_id: user_id)
+    Search.create!(term: final_search, ip: ip, user_id: user_id) if final_search
   end
 end

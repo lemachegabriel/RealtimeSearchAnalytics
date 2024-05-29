@@ -4,8 +4,10 @@ class SearchesController < ApplicationController
     search_term = params[:term]
     ip = request.remote_ip
 
-    $redis.rpush("user:#{user_id}:searches", search_term)
-    SearchProcessorJob.set(wait: 1.minute).perform_later(user_id, search_term, ip)
+    unless search_term.empty?
+      $redis.rpush("user:#{user_id}:searches", search_term)
+      SearchProcessorJob.set(wait: 1.minute).perform_later(user_id, search_term, ip)
+    end
 
     render json: { status: 'ok' }
   end

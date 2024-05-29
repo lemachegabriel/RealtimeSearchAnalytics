@@ -3,10 +3,19 @@
 <div id="results"></div>
 
 <script>
+  function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
   document.addEventListener("DOMContentLoaded", function() {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const searchBox = document.getElementById('search_box');
 
-    document.getElementById('search_box').addEventListener('input', function() {
+    searchBox.addEventListener('input', debounce(function() {
       const term = this.value;
       const userId = 1;
 
@@ -18,6 +27,6 @@
         },
         body: JSON.stringify({ term: term, user_id: userId })
       });
-    });
+    }, 300));
   });
 </script>
