@@ -78,3 +78,4 @@ gem 'rspec-sidekiq', group: :test
 gem 'dotenv-rails'
 gem 'pg'
 
+gem 'tailwindcss-rails', '~> 2.0'
