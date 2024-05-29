@@ -1,0 +1,23 @@
+<h1>Real-time Search</h1>
+<input type="text" id="search_box" placeholder="Search...">
+<div id="results"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    document.getElementById('search_box').addEventListener('input', function() {
+      const term = this.value;
+      const userId = 1;
+
+      fetch('/searches', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify({ term: term, user_id: userId })
+      });
+    });
+  });
+</script>
