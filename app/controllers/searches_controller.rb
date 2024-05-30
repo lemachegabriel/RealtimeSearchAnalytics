@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
 
     unless search_term.empty?
       $redis.rpush("user:#{user_id}:searches", search_term)
-      SearchProcessorJob.set(wait: 1.minute).perform_later(user_id, search_term, ip)
+      SearchProcessorJob.set(wait: 30.seconds).perform_later(user_id, search_term, ip)
     end
 
     @articles = Article.where("LOWER(title) LIKE ?", "%#{search_term.downcase}%")
