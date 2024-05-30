@@ -27,12 +27,14 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
-    export
+    new do
+      except ['Search']
+    end
     bulk_delete
     show
-    edit
-    delete
+    edit do
+      except ['Search']
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
