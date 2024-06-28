@@ -22,7 +22,7 @@ This project demonstrates a realtime search box for users to search articles, wi
 
 ### Analytics
 
-- **Search Data Aggregation:** The saved search terms are periodically aggregated to generate analytics, providing insights into what users are searching for most frequently. This data is accessible on the `Admin Panel` route `/admin` or on production (https://real-time-search-analytics-1b75562e254e.herokuapp.com/admin/search) .
+- **Search Data Aggregation:** The saved search terms are periodically aggregated to generate analytics, providing insights into what users are searching for most frequently. This data is accessible on the `Admin Panel` route `/admin`.
 
 By combining Redis for fast, temporary storage and Sidekiq for efficient, reliable background processing, we achieve a scalable and responsive system for capturing and analyzing real-time search data.
 
